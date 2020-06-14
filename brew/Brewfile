@@ -1,0 +1,63 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+# Command-line tool that allows to manage your resources with crowdin.com
+brew "crowdin"
+# Improved top (interactive process viewer)
+brew "htop"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Mac App Store command-line interface
+brew "mas"
+# Modern and intuitive terminal-based text editor
+brew "micro"
+# Manage multiple Node.js versions
+brew "nvm"
+# Object-relational database system
+brew "postgresql"
+# Python version management
+brew "pyenv"
+# Programatically correct mistyped console commands
+brew "thefuck"
+# Secures, stores, and tightly controls access to secrets
+brew "vault"
+# Subversion-like utility to work with Jackrabbit FileVault
+brew "vault-cli"
+# Internet file retriever
+brew "wget"
+cask "1password"
+cask "alfred"
+cask "chai"
+cask "choosy"
+cask "chromium"
+cask "colorsnapper"
+cask "docker"
+cask "firefox"
+cask "font-fira-code"
+cask "google-chrome"
+cask "insomnia"
+cask "iterm2"
+cask "itsycal"
+cask "magicprefs"
+cask "ngrok"
+cask "opera"
+cask "parsec"
+cask "psequel"
+cask "skype"
+cask "slack"
+cask "telegram"
+cask "ticktick"
+cask "transmission"
+cask "tunnelblick"
+cask "ukelele"
+cask "virtualbox"
+cask "visual-studio-code"
+cask "whatsapp"
+cask "zoomus"
+mas "Grammarly for Safari", id: 1462114288
+mas "Hotspot Shield", id: 771076721
+mas "Magnet", id: 441258766
+mas "Pages", id: 409201541
+mas "Spark", id: 1176895641
+mas "Tab Switcher", id: 1406718335
