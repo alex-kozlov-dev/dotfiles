@@ -66,8 +66,8 @@ source $DOTFILES/zsh/config.sh
 source $DOTFILES/iterm2/config.sh
 
 # VSCode
-# source $DOTFILES/vscode/plugins.sh
-# source $DOTFILES/vscode/config.sh
+source $DOTFILES/vscode/plugins.sh
+source $DOTFILES/vscode/config.sh
 
 # MacOS defaults
 source $DOTFILES/macos/config.sh
