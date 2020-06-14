@@ -62,12 +62,18 @@ source $DOTFILES/zsh/install.sh
 source $DOTFILES/zsh/custom.sh
 source $DOTFILES/zsh/config.sh
 
+# Python
+source $DOTFILES/python/install.sh
+
 # iTerm2
 source $DOTFILES/iterm2/config.sh
 
 # VSCode
 source $DOTFILES/vscode/plugins.sh
 source $DOTFILES/vscode/config.sh
+
+# MagicPrefs
+source $DOTFILES/magicprefs/config.sh
 
 # MacOS defaults
 source $DOTFILES/macos/config.sh
