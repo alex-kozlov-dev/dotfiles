@@ -7,3 +7,5 @@ brew bundle dump --force --describe --file=$DOTFILES/brew/Brewfile
 
 echo 'Dumping VSCode plugins...'
 code --list-extensions > $DOTFILES/vscode/plugins.txt
+
+echo "Dump completed 🚀🎉😎"

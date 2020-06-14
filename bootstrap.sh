@@ -12,15 +12,15 @@ function prompt_to_continue() {
 
 # https://stackoverflow.com/a/30547074
 function start_sudo() {
-    sudo -v
-    ( while true; do sudo -v; sleep 50; done; ) &
-    SUDO_PID="$!"
-    trap stopsudo SIGINT SIGTERM
+  sudo -v
+  ( while true; do sudo -v; sleep 50; done; ) &
+  SUDO_PID="$!"
+  trap stopsudo SIGINT SIGTERM
 }
 function stop_sudo() {
-    kill "$SUDO_PID"
-    trap - SIGINT SIGTERM
-    sudo -k
+  kill "$SUDO_PID"
+  trap - SIGINT SIGTERM
+  sudo -k
 }
 
 start_sudo

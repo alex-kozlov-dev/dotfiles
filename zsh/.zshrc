@@ -5,12 +5,12 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
 
 plugins=(
-	z
-	git
-	docker
-	thefuck
-	zsh-interactive-cd
-	zsh-autosuggestions
+  z
+  git
+  docker
+  thefuck
+  zsh-interactive-cd
+  zsh-autosuggestions
   autoupdate
 )
 
@@ -27,24 +27,24 @@ export LANG=en_US
 eval "$(thefuck --alias)"
 
 function killport () {
-	kill -9 $(lsof -ti tcp:$1)
+  kill -9 $(lsof -ti tcp:$1)
 }
 
 function hg () {
-	history -E | grep "$*"
+  history -E | grep "$*"
 }
 
 function gitrecent () {
-	local num="${1:-10}"
-	git reflog |
-    egrep -io "moving from ([^[:space:]]+)" |
-    awk '{ print $3 }' | # extract 3rd column
-    awk ' !x[$0]++' | # Removes duplicates.  See http://stackoverflow.com/questions/11532157
-    egrep -v '^[a-f0-9]{40}$' | # remove hash results
-    while read line; do # verify existence
-      ([[ $CHECK_EXISTENCE = '0' ]] || git rev-parse --verify "$line" &>/dev/null) && echo "$line"
-    done |
-    head -n "$num"
+  local num="${1:-10}"
+  git reflog |
+  egrep -io "moving from ([^[:space:]]+)" |
+  awk '{ print $3 }' | # extract 3rd column
+  awk ' !x[$0]++' | # Removes duplicates.  See http://stackoverflow.com/questions/11532157
+  egrep -v '^[a-f0-9]{40}$' | # remove hash results
+  while read line; do # verify existence
+    ([[ $CHECK_EXISTENCE = '0' ]] || git rev-parse --verify "$line" &>/dev/null) && echo "$line"
+  done |
+  head -n "$num"
 }
 
 # init nvm
