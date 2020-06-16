@@ -39,7 +39,7 @@ cask "google-chrome"
 cask "insomnia"
 cask "iterm2"
 cask "itsycal"
-cask "magicprefs"
+cask "jitouch"
 cask "ngrok"
 cask "opera"
 cask "parsec"
@@ -57,7 +57,10 @@ cask "whatsapp"
 cask "zoomus"
 mas "Grammarly for Safari", id: 1462114288
 mas "Hotspot Shield", id: 771076721
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
+mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Spark", id: 1176895641
 mas "Tab Switcher", id: 1406718335
