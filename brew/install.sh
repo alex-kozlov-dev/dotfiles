@@ -27,4 +27,4 @@ do
   echo 'Thanks'
 done
 
-/usr/local/bin/brew bundle --no-upgrade --file=$HOME/.dotfiles/brew/Brewfile
+/usr/local/bin/brew bundle --no-upgrade --no-lock --file=$HOME/.dotfiles/brew/Brewfile
