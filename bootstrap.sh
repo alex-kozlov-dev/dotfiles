@@ -72,9 +72,6 @@ source $DOTFILES/iterm2/config.sh
 source $DOTFILES/vscode/plugins.sh
 source $DOTFILES/vscode/config.sh
 
-# MagicPrefs
-source $DOTFILES/magicprefs/config.sh
-
 # MacOS defaults
 source $DOTFILES/macos/config.sh
 
