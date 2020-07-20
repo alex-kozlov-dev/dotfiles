@@ -4,6 +4,8 @@ tap "homebrew/cask-fonts"
 tap "homebrew/core"
 # Command-line tool that allows to manage your resources with crowdin.com
 brew "crowdin"
+# Command-line fuzzy finder written in Go
+brew "fzf"
 # Improved top (interactive process viewer)
 brew "htop"
 # Lightweight and flexible command-line JSON processor
@@ -14,6 +16,8 @@ brew "mas"
 brew "micro"
 # Manage multiple Node.js versions
 brew "nvm"
+# Python dependency management tool
+brew "pipenv"
 # Object-relational database system
 brew "postgresql"
 # Python version management
@@ -28,6 +32,7 @@ brew "vault-cli"
 brew "wget"
 cask "1password"
 cask "alfred"
+cask "bettertouchtool"
 cask "chai"
 cask "choosy"
 cask "chromium"
@@ -39,11 +44,13 @@ cask "google-chrome"
 cask "insomnia"
 cask "iterm2"
 cask "itsycal"
-cask "jitouch"
+cask "licecap"
+cask "lunar"
 cask "ngrok"
 cask "opera"
 cask "parsec"
 cask "psequel"
+cask "shortcutdetective"
 cask "skype"
 cask "slack"
 cask "telegram"
@@ -55,6 +62,7 @@ cask "virtualbox"
 cask "visual-studio-code"
 cask "whatsapp"
 cask "zoomus"
+mas "GIPHY CAPTURE", id: 668208984
 mas "Grammarly for Safari", id: 1462114288
 mas "Hotspot Shield", id: 771076721
 mas "iMovie", id: 408981434

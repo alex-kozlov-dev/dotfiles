@@ -56,6 +56,7 @@ git clone git@github.com:alex-kozlov-dev/dotfiles.git $DOTFILES
 
 # Homebrew
 source $DOTFILES/brew/install.sh
+source $DOTFILES/brew/postinstall.sh
 
 # Oh-My-Zsh
 source $DOTFILES/zsh/install.sh

@@ -14,7 +14,9 @@ plugins=(
   autoupdate
 )
 
-autoload -U compinit && compinit
+autoload -Uz compinit
+compinit
+zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 
 source $ZSH/oh-my-zsh.sh
 
@@ -58,6 +60,7 @@ autoload -U promptinit; promptinit
 prompt pure
 
 # init pyenv
+export PYENV_ROOT=$HOME/.pyenv
 eval "$(pyenv init -)"
 
 # pass pyenv's python to pipenv
@@ -67,3 +70,6 @@ export PIPENV_PYTHON="$PYENV_ROOT/shims/python"
 setopt NULL_GLOB
 for f in $HOME/.dotfiles/zsh/private/*.sh; do source $f; done
 unsetopt NULL_GLOB
+
+# init fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
