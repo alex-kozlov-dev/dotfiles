@@ -45,5 +45,10 @@
   "editor.tabSize": 2,
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "workbench.editor.showTabs": true,
+  "git.openDiffOnClick": false,
+  "diffEditor.renderSideBySide": false,
+  "tabnine.experimentalAutoImports": true
+  // "editor.acceptSuggestionOnEnter": "off"
 }

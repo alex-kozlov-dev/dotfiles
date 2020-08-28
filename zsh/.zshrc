@@ -73,3 +73,6 @@ unsetopt NULL_GLOB
 
 # init fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# kubectl krew
+export PATH="${PATH}:${HOME}/.krew/bin"

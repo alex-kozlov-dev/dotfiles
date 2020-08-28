@@ -9,6 +9,7 @@ formulahendry.auto-close-tag
 gimenete.github-linker
 jcbuisson.vue
 KevinRose.vsc-python-indent
+mechatroner.rainbow-csv
 mf.vscode-styled-components
 mgmcdermott.vscode-language-babel
 ms-azuretools.vscode-docker
@@ -18,8 +19,10 @@ ms-vscode.vscode-typescript-tslint-plugin
 naumovs.color-highlight
 octref.vetur
 PKief.material-icon-theme
+Prisma.vscode-graphql
 ricard.postcss
 shd101wyy.markdown-preview-enhanced
 stuart.unique-window-colors
 stylelint.vscode-stylelint
+TabNine.tabnine-vscode
 WallabyJs.quokka-vscode
