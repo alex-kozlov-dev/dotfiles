@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+
+NS="pr-$1"
+
+if [[ "$1" == "stage40" ]]
+then
+  NS="static-stage40"
+fi
+
+POD=$(kubectl -n $NS get pods --no-headers -o custom-columns=":metadata.name" | grep monolith-web | tail -n 1)
+
+kubectl -n $NS exec -it $POD bash

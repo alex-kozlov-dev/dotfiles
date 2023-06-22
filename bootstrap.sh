@@ -69,16 +69,6 @@ source $DOTFILES/node/install.sh
 # Python
 source $DOTFILES/python/install.sh
 
-# iTerm2
-source $DOTFILES/iterm2/config.sh
-
-# VSCode
-source $DOTFILES/vscode/plugins.sh
-source $DOTFILES/vscode/config.sh
-
-# MacOS defaults
-source $DOTFILES/macos/config.sh
-
 stop_sudo
 
 echo "Bootstrap completed 🚀🎉😎"
