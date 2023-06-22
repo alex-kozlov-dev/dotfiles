@@ -7,6 +7,7 @@ which -s brew
 if [[ $? != 0 ]] ; then
   echo 'Homebrew not found. Installing...'
   echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 else
   echo 'Homebrew already installed. Updating...'
   brew update
