@@ -6,7 +6,7 @@ sudo -v
 which -s brew
 if [[ $? != 0 ]] ; then
   echo 'Homebrew not found. Installing...'
-  echo | ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  echo | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
   echo 'Homebrew already installed. Updating...'
   brew update
