@@ -1,13 +1,25 @@
+tap "adoptopenjdk/openjdk"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
+# Official Amazon AWS command-line interface
+brew "awscli"
 # Command-line tool that allows to manage your resources with crowdin.com
 brew "crowdin"
+# Isolated development environments using Docker
+brew "docker-compose", link: false
+# Play, record, convert, and stream audio and video
+brew "ffmpeg"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
+brew "gh"
 # Improved top (interactive process viewer)
 brew "htop"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Kubernetes command-line interface
@@ -26,54 +38,75 @@ brew "pipenv"
 brew "postgresql"
 # Python version management
 brew "pyenv"
-# Programatically correct mistyped console commands
+# Pyenv plugin to manage virtualenv
+brew "pyenv-virtualenv"
+# Programmatically correct mistyped console commands
 brew "thefuck"
 # Secures, stores, and tightly controls access to secrets
 brew "vault"
 # Subversion-like utility to work with Jackrabbit FileVault
 brew "vault-cli"
+# Watch files and take action when they change
+brew "watchman"
 # Internet file retriever
 brew "wget"
+# Password manager that keeps all passwords secure behind one password
 cask "1password"
-cask "alfred"
-cask "bettertouchtool"
+# Utility to prevent the system from going to sleep
 cask "chai"
+# Open links in any browser
 cask "choosy"
+# Free and open-source web browser
 cask "chromium"
+# Color picking application
 cask "colorsnapper"
+# Universal database tool and SQL client
+cask "dbeaver-community"
+# App to build and share containerized applications and microservices
 cask "docker"
+# Collaborative team software
+cask "figma"
+# Web browser
 cask "firefox"
+# Free monospaced font with programming ligatures
 cask "font-fira-code"
+# Web browser
 cask "google-chrome"
+# Utility to reduce the size of 24-bit PNG files
+cask "imagealpha"
+# Tool to optimize images to a smaller size
+cask "imageoptim"
+# Vector graphics editor
+cask "inkscape"
+# HTTP and GraphQL Client
 cask "insomnia"
-cask "iterm2"
-cask "itsycal"
+# Animated screen capture application
 cask "licecap"
-cask "lunar"
+# Screen and video recording software
+cask "loom"
+# Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
-cask "opera"
-cask "parsec"
 cask "psequel"
+# Control your tools with a few keystrokes
+cask "raycast"
+# Detects which app receives a keyboard shortcut (hotkey)
 cask "shortcutdetective"
-cask "skype"
+# Team communication and collaboration software
 cask "slack"
-cask "spotify"
+# Messaging app with a focus on speed and security
 cask "telegram"
-cask "ticktick"
-cask "transmission"
+# Free and open-source OpenVPN client
 cask "tunnelblick"
+# Unicode keyboard layout editor
 cask "ukelele"
-cask "virtualbox"
+# Open-source code editor
 cask "visual-studio-code"
-cask "whatsapp"
-cask "zoomus"
-mas "GIPHY CAPTURE", id: 668208984
-mas "Grammarly for Safari", id: 1462114288
+# Rust-based terminal
+cask "warp"
+# Video communication and virtual meeting platform
+cask "zoom"
 mas "Hotspot Shield", id: 771076721
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825
+mas "OP-Z", id: 1098190457
 mas "Pages", id: 409201541
-mas "Spark", id: 1176895641
-mas "Tab Switcher", id: 1406718335
