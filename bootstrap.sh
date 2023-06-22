@@ -52,7 +52,16 @@ echo "Open https://github.com/settings/keys and add key to profile"
 prompt_to_continue
 
 # Clone dotfiles repo
-git clone git@github.com:alex-kozlov-dev/dotfiles.git $DOTFILES
+if [ -d $DOTFILES ] 
+then
+    echo "Dotfiles directory already exist, pulling"
+    cd $DOTFILES
+    git pull
+    cd ~
+else
+    echo "Dotfiles do not exist, cloning"
+    git clone git@github.com:alex-kozlov-dev/dotfiles.git $DOTFILES
+fi
 
 # Homebrew
 source $DOTFILES/brew/install.sh
