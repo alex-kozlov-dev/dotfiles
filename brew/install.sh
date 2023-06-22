@@ -16,16 +16,20 @@ fi
 brew install mas
 
 # Ensure App Store login for mas
-until (mas account > /dev/null);
-do
-  echo 'Open App Store app and sign in'
+echo 'Open App Store and sign in via GUI (if not already signed in)'
+prompt_to_continue
 
-  until (mas account > /dev/null);
-  do
-    sleep 3
-  done
+# Not working anymore😞
+# until (mas account > /dev/null);
+# do
+#   echo 'Open App Store app and sign in'
 
-  echo 'Thanks'
-done
+#   until (mas account > /dev/null);
+#   do
+#     sleep 3
+#   done
+
+#   echo 'Thanks'
+# done
 
 /usr/local/bin/brew bundle --no-upgrade --no-lock --file=$HOME/.dotfiles/brew/Brewfile
