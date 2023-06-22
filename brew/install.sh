@@ -32,4 +32,4 @@ prompt_to_continue
 #   echo 'Thanks'
 # done
 
-/usr/local/bin/brew bundle --no-upgrade --no-lock --file=$HOME/.dotfiles/brew/Brewfile
+brew bundle --no-upgrade --no-lock --file=$HOME/.dotfiles/brew/Brewfile
