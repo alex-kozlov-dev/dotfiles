@@ -72,6 +72,8 @@ source $DOTFILES/zsh/install.sh
 source $DOTFILES/zsh/custom.sh
 source $DOTFILES/zsh/config.sh
 
+exec zsh
+
 # Node
 source $DOTFILES/node/install.sh
 

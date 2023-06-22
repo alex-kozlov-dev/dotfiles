@@ -1,7 +1,6 @@
 tap "adoptopenjdk/openjdk"
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/core"
 # Official Amazon AWS command-line interface
@@ -86,7 +85,6 @@ cask "licecap"
 cask "loom"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
-cask "psequel"
 # Control your tools with a few keystrokes
 cask "raycast"
 # Detects which app receives a keyboard shortcut (hotkey)
