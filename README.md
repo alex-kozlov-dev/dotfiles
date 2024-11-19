@@ -1,5 +1,11 @@
 # Dotfiles
 
+Install xcode CLI tools:
+
+```bash
+xcode-select --install
+```
+
 Install nix:
 
 ```bash
