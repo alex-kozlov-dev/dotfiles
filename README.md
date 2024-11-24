@@ -15,7 +15,7 @@ sh <(curl -L https://nixos.org/nix/install)
 Pull the repo:
 
 ```bash
-nix-shell -p git --run 'git clone -b nix https://github.com/alex-kozlov-dev/dotfiles.git ~/.dotfiles'
+nix-shell -p git --run 'git clone https://github.com/alex-kozlov-dev/dotfiles.git ~/.dotfiles'
 ```
 
 Activate config:
