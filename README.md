@@ -1,5 +1,7 @@
 # Dotfiles
 
+## Installation
+
 Install xcode CLI tools:
 
 ```bash
@@ -22,4 +24,18 @@ Activate config:
 
 ```bash
 nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake ~/.dotfiles#mac
+```
+
+## Commands
+
+Apply config:
+
+```
+make apply
+```
+
+Cleanup unused nix stuff:
+
+```
+make cleanup
 ```
