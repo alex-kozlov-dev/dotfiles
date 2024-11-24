@@ -1,7 +1,25 @@
 # Dotfiles
 
-Execute following to run bootstrap script:
+Install xcode CLI tools:
 
+```bash
+xcode-select --install
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/alex-kozlov-dev/dotfiles/master/bootstrap.sh)"
+
+Install nix:
+
+```bash
+sh <(curl -L https://nixos.org/nix/install)
+```
+
+Pull the repo:
+
+```bash
+nix-shell -p git --run 'git clone https://github.com/alex-kozlov-dev/dotfiles.git ~/.dotfiles'
+```
+
+Activate config:
+
+```bash
+nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake ~/.dotfiles#mac
 ```
