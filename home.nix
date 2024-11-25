@@ -11,6 +11,7 @@
 		pkgs.starship
 		pkgs.any-nix-shell
 		pkgs.zoxide
+		pkgs.fzf
 	];
 
 	# This value determines the Home Manager release that your
