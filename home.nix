@@ -37,6 +37,11 @@
 		text = "yarn";
 	};
 
+	# config.nix
+	home.file.".config/nixpkgs/config.nix" = {
+		text = "{ allowUnfree = true; }";
+	};
+
 	programs.fish = {
 		enable = true;
 		interactiveShellInit = ''
