@@ -32,7 +32,6 @@
 				[
 					pkgs.micro
 					pkgs.git
-					pkgs.iterm2
 					pkgs.gh
 					pkgs.google-chrome
 					pkgs.jq
@@ -65,6 +64,8 @@
 					"1password"
 					"cursor"
 					"raycast"
+					"notion"
+					"ghostty"
 				];
 
 				masApps = {

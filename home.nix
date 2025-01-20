@@ -42,6 +42,18 @@
 		text = "{ allowUnfree = true; }";
 	};
 
+	# ghostty
+	home.file.".config/ghostty/config" = {
+		text = ''
+			quick-terminal-animation-duration = 0
+			background-opacity = 0.75
+			background-blur-radius = 20
+			keybind = global:ctrl+§=toggle_quick_terminal
+			keybind = global:ctrl+~=toggle_quick_terminal
+			theme = niji
+		'';
+	};
+
 	programs.fish = {
 		enable = true;
 		interactiveShellInit = ''
@@ -53,6 +65,11 @@
 				# Add a newline to the end of each command
 				function add_newline --on-event fish_postexec
 					echo
+				end
+
+				# ghostty shell integration
+				if set -q GHOSTTY_RESOURCES_DIR
+					source "$GHOSTTY_RESOURCES_DIR/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish"
 				end
 
 				# Auto load nvm
