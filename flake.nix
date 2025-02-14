@@ -97,16 +97,6 @@
 				'';
 			};
 
-			# Safely make fish the default shell
-			programs.zsh = {
-				interactiveShellInit = ''
-					if [[ $(ps -o comm= -p $PPID) != "fish" && -z ''${ZSH_EXECUTION_STRING} ]]
-					then
-						exec ${pkgs.fish}/bin/fish
-					fi
-				'';
-			};
-
 			system = {
 				# Set Git commit hash for darwin-version.
 				configurationRevision = self.rev or self.dirtyRev or null;

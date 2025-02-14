@@ -45,6 +45,7 @@
 	# ghostty
 	home.file.".config/ghostty/config" = {
 		text = ''
+			command = ${pkgs.fish}/bin/fish
 			quick-terminal-animation-duration = 0
 			background-opacity = 0.75
 			background-blur-radius = 20
