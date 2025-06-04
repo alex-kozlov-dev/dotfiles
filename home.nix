@@ -8,7 +8,6 @@
 
 	# Packages that should be installed to the user profile.
 	home.packages = [
-		pkgs.starship
 		pkgs.any-nix-shell
 		pkgs.zoxide
 		pkgs.fzf
@@ -47,10 +46,12 @@
 		text = ''
 			command = ${pkgs.fish}/bin/fish
 			quick-terminal-animation-duration = 0
+			quick-terminal-screen = macos-menu-bar
 			background-opacity = 0.75
 			background-blur-radius = 20
 			keybind = global:ctrl+§=toggle_quick_terminal
 			keybind = global:ctrl+~=toggle_quick_terminal
+			keybind = global:ctrl+`=toggle_quick_terminal
 			theme = niji
 		'';
 	};
@@ -92,6 +93,17 @@
 				end
 
 				__load_nvm
+
+				set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
+				set -gx ANDROID_HOME "$HOME/Library/Android/sdk"
+				set -gx PATH "$PATH:$ANDROID_HOME/emulator"
+				set -gx PATH "$PATH:$ANDROID_HOME/platform-tools"
+
+				set -gx PATH "$PATH:$HOME/.rd/bin"
+
+				set -gx AWS_PROFILE "staging"
+
+				set -u pure_enable_aws_profile false
 		'';
 		plugins = [
 			{

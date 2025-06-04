@@ -42,7 +42,7 @@
 				];
 			
 			fonts.packages = [
-				(pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; })
+				pkgs.nerd-fonts.fira-code
 			];
 
 			# Homebrew
@@ -51,6 +51,12 @@
 
 				brews = [
 					"mas"
+					"thefuck"
+					"codex"
+				
+					"awscli"
+
+					"watchman"
 				];
 
 				casks = [
@@ -64,8 +70,13 @@
 					"1password"
 					"cursor"
 					"raycast"
-					"notion"
+					"ollama"
+					# "notion"
 					"ghostty"
+					# "rancher"
+
+					"zulu@17"
+					# "android-studio"
 				];
 
 				masApps = {
@@ -80,7 +91,9 @@
 				onActivation = {
 					autoUpdate = true;
 					upgrade = true;
-					cleanup = "zap";
+
+					# cleanup = "zap";
+					cleanup = "none";
 				};
 			};
 
@@ -118,7 +131,7 @@
 			};
 
 			# Enable Touch ID for sudo authentication
-			security.pam.enableSudoTouchIdAuth = true;
+			security.pam.services.sudo_local.touchIdAuth = true;
 
 			# The platform the configuration will be used on.
 			nixpkgs.hostPlatform = "aarch64-darwin";
