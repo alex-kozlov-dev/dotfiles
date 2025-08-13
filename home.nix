@@ -104,6 +104,11 @@
 				set -gx AWS_PROFILE "staging"
 
 				set -u pure_enable_aws_profile false
+
+				# Source private fish configuration if it exists
+				if test -f ~/.config/fish/private.fish
+					source ~/.config/fish/private.fish
+				end
 		'';
 		plugins = [
 			{
