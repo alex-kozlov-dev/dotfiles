@@ -52,11 +52,11 @@
 				brews = [
 					"mas"
 					"thefuck"
-					"codex"
+					# "codex"
 				
-					"awscli"
+					# "awscli"
 
-					"watchman"
+					# "watchman"
 				];
 
 				casks = [
@@ -64,25 +64,26 @@
 					"licecap"
 					"tunnelblick"
 					"zoom"
-					"betterdisplay"
-					"proxy-audio-device"
+					# "betterdisplay"
+					# "proxy-audio-device"
 					"swish"
 					"1password"
 					"cursor"
 					"raycast"
-					"ollama"
+					# "ollama"
 					# "notion"
-					"ghostty"
+					# "ghostty"
+					"warp"
 					# "rancher"
 
-					"zulu@17"
+					# "zulu@17"
 					# "android-studio"
 				];
 
 				masApps = {
 				  "1Password for Safari" = 1569813296;
-				  "Numbers" = 409203825;
-				  "Pages" = 409201541;
+				#   "Numbers" = 409203825;
+				#   "Pages" = 409201541;
 				  "Spark" = 1176895641;
 				  "Velja" = 1607635845;
 				  "Telegram" = 747648890;
@@ -92,8 +93,8 @@
 					autoUpdate = true;
 					upgrade = true;
 
-					# cleanup = "zap";
-					cleanup = "none";
+					cleanup = "zap";
+					# cleanup = "none";
 				};
 			};
 
