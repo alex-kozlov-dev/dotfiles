@@ -20,7 +20,7 @@
 
 	outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, nix-homebrew }:
 	let
-		username = "alex.k";
+		username = "alex";
 
 		configuration = { pkgs, ... }: {
 
