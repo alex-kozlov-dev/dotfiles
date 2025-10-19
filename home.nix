@@ -23,19 +23,6 @@
 	# changes in each release.
 	home.stateVersion = "24.05";
 
-	# nvm
-	home.file.".nvm" = {
-		source = builtins.fetchGit {
-			url = "https://github.com/nvm-sh/nvm.git";
-			ref = "refs/tags/v0.40.1";
-			rev = "179d45050be0a71fd57591b0ed8aedf9b177ba10";
-		};
-		recursive = true;
-	};
-	home.file.".nvm/default-packages" = {
-		text = "yarn";
-	};
-
 	# config.nix
 	home.file.".config/nixpkgs/config.nix" = {
 		text = "{ allowUnfree = true; }";
@@ -44,15 +31,16 @@
 	# ghostty
 	home.file.".config/ghostty/config" = {
 		text = ''
-			command = ${pkgs.fish}/bin/fish
+			font-family = "FiraCode Nerd Font Mono"
 			quick-terminal-animation-duration = 0
 			quick-terminal-screen = macos-menu-bar
-			background-opacity = 0.75
-			background-blur-radius = 20
 			keybind = global:ctrl+§=toggle_quick_terminal
 			keybind = global:ctrl+~=toggle_quick_terminal
 			keybind = global:ctrl+`=toggle_quick_terminal
-			theme = niji
+			keybind = shift+enter=text:\n
+			theme = flexoki-dark
+			background = #000000
+			background-opacity = 0.9
 		'';
 	};
 
@@ -69,39 +57,13 @@
 					echo
 				end
 
-				# ghostty shell integration
-				if set -q GHOSTTY_RESOURCES_DIR
-					source "$GHOSTTY_RESOURCES_DIR/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish"
-				end
+				# Activate mise
+				mise activate fish | source
 
-				# Auto load nvm
-				function __load_nvm --on-variable="PWD"
-					set -l default_node_version (nvm version default)
-					set -l node_version (nvm version)
-					set -l nvmrc_path (nvm_find_nvmrc)
-					if test -n "$nvmrc_path"
-						set -l nvmrc_node_version (nvm version (cat $nvmrc_path))
-						if test "$nvmrc_node_version" = "N/A"
-							nvm install (cat $nvmrc_path)
-						else if test "$nvmrc_node_version" != "$node_version"
-							nvm use $nvmrc_node_version
-						end
-					else if test "$node_version" != "$default_node_version"
-						echo "Reverting to default Node version"
-						nvm use default
-					end
-				end
+				# Enable .nvmrc
+				mise settings add idiomatic_version_file_enable_tools node
 
-				__load_nvm
-
-				set -gx JAVA_HOME "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home"
-				set -gx ANDROID_HOME "$HOME/Library/Android/sdk"
-				set -gx PATH "$PATH:$ANDROID_HOME/emulator"
-				set -gx PATH "$PATH:$ANDROID_HOME/platform-tools"
-
-				set -gx PATH "$PATH:$HOME/.rd/bin"
-
-				set -gx AWS_PROFILE "staging"
+				# fish_add_path "/Users/alex/.bun/bin"
 
 				set -u pure_enable_aws_profile false
 
@@ -116,10 +78,6 @@
 				src = pkgs.fishPlugins.pure.src;
 			}
 		];
-		functions = {
-			nvm = "bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv";
-			nvm_find_nvmrc = "bass source ~/.nvm/nvm.sh --no-use ';' nvm_find_nvmrc";
-		};
 	};
 
 	# Let Home Manager install and manage itself.

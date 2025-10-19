@@ -33,7 +33,6 @@
 					pkgs.micro
 					pkgs.git
 					pkgs.gh
-					pkgs.google-chrome
 					pkgs.jq
 					pkgs.slack
 					pkgs.vscode
@@ -49,14 +48,15 @@
 			homebrew = {
 				enable = true;
 
+				taps = [
+					"theboredteam/boring-notch"
+				];
+
 				brews = [
 					"mas"
 					"thefuck"
-					# "codex"
-				
-					# "awscli"
-
-					# "watchman"
+					"uv"
+					"mise"
 				];
 
 				casks = [
@@ -64,26 +64,27 @@
 					"licecap"
 					"tunnelblick"
 					"zoom"
-					# "betterdisplay"
-					# "proxy-audio-device"
 					"swish"
 					"1password"
 					"cursor"
 					"raycast"
-					# "ollama"
-					# "notion"
-					# "ghostty"
-					"warp"
-					# "rancher"
-
-					# "zulu@17"
-					# "android-studio"
+					"sunsama"
+					"thebrowsercompany-dia"
+					"bartender"
+					"boring-notch"
+					"ghostty"
+					"google-chrome"
+					"claude"
+					"macwhisper"
+					"ollama"
 				];
+
+				caskArgs = {
+					no_quarantine = true;
+				};
 
 				masApps = {
 				  "1Password for Safari" = 1569813296;
-				#   "Numbers" = 409203825;
-				#   "Pages" = 409201541;
 				  "Spark" = 1176895641;
 				  "Velja" = 1607635845;
 				  "Telegram" = 747648890;
@@ -94,7 +95,6 @@
 					upgrade = true;
 
 					cleanup = "zap";
-					# cleanup = "none";
 				};
 			};
 
@@ -109,6 +109,13 @@
 					set -gx LC_MESSAGES en_US.UTF-8
 					set -U fish_greeting
 				'';
+			};
+
+			users.knownUsers = [ "alex" ];
+			users.users.alex = {
+				uid = 501;
+				home = "/Users/alex";
+				shell = pkgs.fish;
 			};
 
 			system = {
