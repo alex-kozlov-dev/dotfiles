@@ -34,11 +34,12 @@
 			font-family = "FiraCode Nerd Font Mono"
 			quick-terminal-animation-duration = 0
 			quick-terminal-screen = macos-menu-bar
+			quick-terminal-size = 100%
 			keybind = global:ctrl+§=toggle_quick_terminal
 			keybind = global:ctrl+~=toggle_quick_terminal
 			keybind = global:ctrl+`=toggle_quick_terminal
 			keybind = shift+enter=text:\n
-			theme = flexoki-dark
+			theme = Flexoki Dark
 			background = #000000
 			background-opacity = 0.9
 		'';

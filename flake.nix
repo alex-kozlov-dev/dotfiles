@@ -77,6 +77,7 @@
 					"claude"
 					"macwhisper"
 					"ollama"
+					"plugdata"
 				];
 
 				caskArgs = {
@@ -119,6 +120,7 @@
 			};
 
 			system = {
+				primaryUser = "alex";
 				# Set Git commit hash for darwin-version.
 				configurationRevision = self.rev or self.dirtyRev or null;
 
