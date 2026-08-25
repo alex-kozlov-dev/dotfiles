@@ -1,7 +1,9 @@
 .PHONY: apply cleanup
 
 apply:
-	darwin-rebuild switch --flake .#mac
+	# homebrew.onActivation.autoUpdate is off (see flake.nix), so refresh here.
+	-brew update
+	sudo darwin-rebuild switch --flake .#mac
 
 cleanup:
 	sudo nix-collect-garbage

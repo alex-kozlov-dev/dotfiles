@@ -72,6 +72,12 @@
 				if test -f ~/.config/fish/private.fish
 					source ~/.config/fish/private.fish
 				end
+
+				# https://github.com/qu8n/herdr-automatic-rename
+				# Auto rename hook
+				for _f in $HOME/.config/herdr/plugins/github/herdr-automatic-rename-*/shell/hook.fish
+					test -r "$_f"; and source "$_f"; and break
+				end
 		'';
 		plugins = [
 			{

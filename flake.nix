@@ -34,8 +34,6 @@
 					pkgs.git
 					pkgs.gh
 					pkgs.jq
-					pkgs.slack
-					pkgs.vscode
 					pkgs.rancher
 					pkgs.fishPlugins.bass
 				];
@@ -57,6 +55,8 @@
 					"thefuck"
 					"uv"
 					"mise"
+					"worktrunk"
+					"herdr"
 				];
 
 				casks = [
@@ -71,28 +71,34 @@
 					"sunsama"
 					"thebrowsercompany-dia"
 					"bartender"
-					"boring-notch"
+					# "boring-notch"
 					"ghostty"
 					"google-chrome"
 					"claude"
 					"macwhisper"
-					"ollama"
+					"ollama-app"
 					"plugdata"
+					"docker-desktop"
+					"tailscale-app"
+					"claude-code@latest"
+					"slack"
+					"telegram"
+					"vibe-island"
+					"visual-studio-code"
 				];
-
-				caskArgs = {
-					no_quarantine = true;
-				};
 
 				masApps = {
 				  "1Password for Safari" = 1569813296;
-				  "Spark" = 1176895641;
 				  "Velja" = 1607635845;
-				  "Telegram" = 747648890;
 				};
 
 				onActivation = {
-					autoUpdate = true;
+					# Must stay false: nix-homebrew's `brew` wrapper re-execs itself after
+					# auto-updating, and on that second pass it rebuilds HOMEBREW_PATH from
+					# the already-sanitized PATH. `mas` then isn't on the path `brew bundle`
+					# searches, so it decides mas is missing and every masApps entry dies with
+					# "Installing <app> has failed!". `make apply` runs `brew update` instead.
+					autoUpdate = false;
 					upgrade = true;
 
 					cleanup = "zap";
