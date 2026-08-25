@@ -20,7 +20,8 @@
 
 	outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, nix-homebrew }:
 	let
-		username = "alex";
+		identity = import ./identity.nix;
+		inherit (identity) username;
 
 		configuration = { pkgs, ... }: {
 
@@ -47,7 +48,14 @@
 				enable = true;
 
 				taps = [
-					"theboredteam/boring-notch"
+					{
+						name = "eugenioenko/ttt";
+						trusted = true;
+					}
+					{
+						name = "jnsahaj/lumen";
+						trusted = true;
+					}
 				];
 
 				brews = [
@@ -57,6 +65,10 @@
 					"mise"
 					"worktrunk"
 					"herdr"
+					"ripgrep"
+					"ttt"
+					"jnsahaj/lumen/lumen"
+					"mdcat"
 				];
 
 				casks = [
@@ -69,16 +81,14 @@
 					"cursor"
 					"raycast"
 					"sunsama"
-					"thebrowsercompany-dia"
 					"bartender"
 					# "boring-notch"
 					"ghostty"
 					"google-chrome"
 					"claude"
 					"macwhisper"
-					"ollama-app"
-					"plugdata"
 					"docker-desktop"
+					"betterdisplay"
 					"tailscale-app"
 					"claude-code@latest"
 					"slack"
@@ -108,6 +118,16 @@
 			# Necessary for using flakes on this system.
 			nix.settings.experimental-features = "nix-command flakes";
 
+			programs.zsh = {
+				enable = true;
+				loginShellInit = ''
+					eval "$(mise activate zsh)"
+					mise settings add idiomatic_version_file_enable_tools node
+
+					eval "$(wt config shell init zsh)"
+				'';
+			};
+
 			# Enable alternative shell support in nix-darwin.
 			programs.fish = {
 				enable = true;
@@ -115,18 +135,12 @@
 					set -gx LANG en_US.UTF-8
 					set -gx LC_MESSAGES en_US.UTF-8
 					set -U fish_greeting
+
+					wt config shell init fish | source
 				'';
 			};
 
-			users.knownUsers = [ "alex" ];
-			users.users.alex = {
-				uid = 501;
-				home = "/Users/alex";
-				shell = pkgs.fish;
-			};
-
 			system = {
-				primaryUser = "alex";
 				# Set Git commit hash for darwin-version.
 				configurationRevision = self.rev or self.dirtyRev or null;
 
@@ -158,10 +172,10 @@
 		# $ darwin-rebuild build --flake .#mac
 		darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
 			modules = [
+				identity.module
 				configuration
 				home-manager.darwinModules.home-manager
 				{
-					users.users.${username}.home = "/Users/${username}";
 					home-manager = {
 						useGlobalPkgs = true;
 						useUserPackages = true;

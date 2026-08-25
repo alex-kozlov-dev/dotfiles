@@ -1,9 +1,10 @@
 .PHONY: apply cleanup
 
+USERNAME ?= $(shell id -un)
+USER_UID ?= $(shell id -u)
+
 apply:
-	# homebrew.onActivation.autoUpdate is off (see flake.nix), so refresh here.
-	-brew update
-	sudo darwin-rebuild switch --flake .#mac
+	sudo env USER=$(USERNAME) NIX_DARWIN_UID=$(USER_UID) darwin-rebuild switch --flake .#mac --impure
 
 cleanup:
 	sudo nix-collect-garbage

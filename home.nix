@@ -45,6 +45,11 @@
 		'';
 	};
 
+	# worktrunk (wt) config — copy-ignored on post-start brings node_modules,
+	# the repo's .vscode/ folder, and .claude/settings.local.json into each new
+	# worktree (reflink copy, so it's cheap).
+	home.file.".config/worktrunk/config.toml".source = ./config/worktrunk/config.toml;
+
 	programs.fish = {
 		enable = true;
 		interactiveShellInit = ''
