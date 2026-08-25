@@ -23,7 +23,7 @@ nix-shell -p git --run 'git clone https://github.com/alex-kozlov-dev/dotfiles.gi
 Activate config:
 
 ```bash
-nix run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake ~/.dotfiles#mac
+NIX_DARWIN_UID="$(id -u)" nix --impure run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake ~/.dotfiles#mac
 ```
 
 ## Commands

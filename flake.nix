@@ -9,6 +9,8 @@
 			url = "github:LnL7/nix-darwin";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		# Brew version is managed by nix-homebrew's own pin.
+		# Bump it with: nix flake update nix-homebrew
 		nix-homebrew = {
 			url = "github:zhaofengli-wip/nix-homebrew";
 		};
@@ -20,7 +22,8 @@
 
 	outputs = inputs@{ self, home-manager, nix-darwin, nixpkgs, nix-homebrew }:
 	let
-		username = "alex";
+		identity = import ./identity.nix;
+		inherit (identity) username;
 
 		configuration = { pkgs, ... }: {
 
@@ -49,7 +52,18 @@
 				enable = true;
 
 				taps = [
-					"theboredteam/boring-notch"
+					{
+						name = "theboredteam/boring-notch";
+						trusted = true;
+					}
+					{
+						name = "eugenioenko/ttt";
+						trusted = true;
+					}
+					{
+						name = "jnsahaj/lumen";
+						trusted = true;
+					}
 				];
 
 				brews = [
@@ -57,39 +71,37 @@
 					"thefuck"
 					"uv"
 					"mise"
+					"worktrunk"
+					"fresh-editor"
+					"ripgrep"
+					"ttt"
+					"jnsahaj/lumen/lumen"
+					"mdcat"
 				];
 
 				casks = [
 					"figma"
 					"licecap"
 					"tunnelblick"
-					"zoom"
+					"docker-desktop"
+					"betterdisplay"
 					"swish"
 					"1password"
 					"cursor"
 					"raycast"
 					"sunsama"
-					"thebrowsercompany-dia"
 					"bartender"
 					"boring-notch"
 					"ghostty"
 					"google-chrome"
 					"claude"
 					"macwhisper"
-					"ollama"
-					"plugdata"
+					"shortcutdetective"
+					"claude-code@latest"
+					"cmux"
+					"hammerspoon"
+					"tailscale-app"
 				];
-
-				caskArgs = {
-					no_quarantine = true;
-				};
-
-				masApps = {
-				  "1Password for Safari" = 1569813296;
-				  "Spark" = 1176895641;
-				  "Velja" = 1607635845;
-				  "Telegram" = 747648890;
-				};
 
 				onActivation = {
 					autoUpdate = true;
@@ -102,6 +114,25 @@
 			# Necessary for using flakes on this system.
 			nix.settings.experimental-features = "nix-command flakes";
 
+			# programs.bash = {
+			# 	interactiveShellInit = ''
+			# 		if [[ $(ps -p $PPID -o command | tail -n +2) != "fish" ]]
+			# 		then
+			# 			exec ${pkgs.fish}/bin/fish
+			# 		fi
+			# 	'';
+			# };
+
+			programs.zsh = {
+				enable = true;
+				loginShellInit = ''
+					eval "$(mise activate zsh)"
+					mise settings add idiomatic_version_file_enable_tools node
+
+					eval "$(wt config shell init zsh)"
+				'';
+      		};
+
 			# Enable alternative shell support in nix-darwin.
 			programs.fish = {
 				enable = true;
@@ -109,18 +140,12 @@
 					set -gx LANG en_US.UTF-8
 					set -gx LC_MESSAGES en_US.UTF-8
 					set -U fish_greeting
+
+					wt config shell init fish | source
 				'';
 			};
 
-			users.knownUsers = [ "alex" ];
-			users.users.alex = {
-				uid = 501;
-				home = "/Users/alex";
-				shell = pkgs.fish;
-			};
-
 			system = {
-				primaryUser = "alex";
 				# Set Git commit hash for darwin-version.
 				configurationRevision = self.rev or self.dirtyRev or null;
 
@@ -137,6 +162,17 @@
 					};
 
 					NSGlobalDomain.AppleICUForce24HourTime = true;
+
+					CustomUserPreferences = {
+						# Equivalent of Dock right-click > Options > Assign To: All Desktops.
+						# Makes the cmux window show on the current Space when summoned via
+						# the Hammerspoon hotkey instead of switching to its own Space.
+						"com.apple.spaces" = {
+							"app-bindings" = {
+								"com.cmuxterm.app" = "AllSpaces";
+							};
+						};
+					};
 				};
 			};
 
@@ -152,10 +188,10 @@
 		# $ darwin-rebuild build --flake .#mac
 		darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
 			modules = [
+				identity.module
 				configuration
 				home-manager.darwinModules.home-manager
 				{
-					users.users.${username}.home = "/Users/${username}";
 					home-manager = {
 						useGlobalPkgs = true;
 						useUserPackages = true;

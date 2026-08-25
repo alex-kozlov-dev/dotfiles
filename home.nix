@@ -35,13 +35,41 @@
 			quick-terminal-animation-duration = 0
 			quick-terminal-screen = macos-menu-bar
 			quick-terminal-size = 100%
-			keybind = global:ctrl+§=toggle_quick_terminal
-			keybind = global:ctrl+~=toggle_quick_terminal
-			keybind = global:ctrl+`=toggle_quick_terminal
+			# keybind = global:ctrl+§=toggle_quick_terminal
+			# keybind = global:ctrl+~=toggle_quick_terminal
+			# keybind = global:ctrl+`=toggle_quick_terminal
+			# keybind = global:ctrl+grave_accent=toggle_quick_terminal
 			keybind = shift+enter=text:\n
+			macos-option-as-alt = left
 			theme = Flexoki Dark
 			background = #000000
 			background-opacity = 0.9
+		'';
+	};
+
+	# worktrunk (wt) config — copy-ignored on post-start brings node_modules,
+	# the repo's .vscode/ folder, and .claude/settings.local.json into each new
+	# worktree (reflink copy, so it's cheap).
+	home.file.".config/worktrunk/config.toml".source = ./config/worktrunk/config.toml;
+
+	# hammerspoon
+	home.file.".hammerspoon/init.lua" = {
+		text = ''
+			-- iTerm-style summon/dismiss of cmux
+			local cmuxBundleID = "com.cmuxterm.app"
+
+			hs.hotkey.bind({ "ctrl" }, "`", function()
+				local app = hs.application.get(cmuxBundleID)
+				if app == nil then
+					hs.application.launchOrFocusByBundleID(cmuxBundleID)
+				elseif app:isFrontmost() then
+					app:hide()
+				else
+					app:activate(true)
+				end
+			end)
+
+			hs.alert.show("Hammerspoon config loaded")
 		'';
 	};
 
@@ -72,6 +100,12 @@
 				if test -f ~/.config/fish/private.fish
 					source ~/.config/fish/private.fish
 				end
+
+				# Bedrock models fix
+				set -gx ANTHROPIC_DEFAULT_FABLE_MODEL "global.anthropic.claude-fable-5"
+				set -gx ANTHROPIC_DEFAULT_OPUS_MODEL "eu.anthropic.claude-opus-5"
+				set -gx ANTHROPIC_DEFAULT_SONNET_MODEL "eu.anthropic.claude-sonnet-5"
+				set -gx ANTHROPIC_DEFAULT_HAIKU_MODEL "eu.anthropic.claude-haiku-4-5-20251001-v1:0"
 		'';
 		plugins = [
 			{
