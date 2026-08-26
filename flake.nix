@@ -56,6 +56,10 @@
 						name = "jnsahaj/lumen";
 						trusted = true;
 					}
+					{
+						name = "rjyo/moshi";
+						trusted = true;
+					}
 				];
 
 				brews = [
@@ -69,6 +73,8 @@
 					"ttt"
 					"jnsahaj/lumen/lumen"
 					"mdcat"
+					"moshi-hook"
+					"mosh"
 				];
 
 				casks = [
