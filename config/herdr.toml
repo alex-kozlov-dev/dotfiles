@@ -1,5 +1,6 @@
 [keys]
 new_tab = ["prefix+c", "cmd+t"]
+close_pane = ["prefix+x", "cmd+w"]
 
 [ui]
 prompt_new_tab_name = false
