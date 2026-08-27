@@ -16,6 +16,17 @@ mise settings add idiomatic_version_file_enable_tools node
 
 set -u pure_enable_aws_profile false
 
+# Quick question: ask Claude and print the answer, e.g. `qq how do I undo a git commit?`
+function qq --description "Ask Claude a quick question"
+    if test (count $argv) -eq 0
+        echo "Usage: qq <question>" >&2
+        return 1
+    end
+    claude -p --model sonnet --tools "" --no-session-persistence \
+        --append-system-prompt "You are answering a quick one-off question asked from the terminal. Answer directly and concisely, in a few lines at most. No preamble, no follow-up questions." \
+        "$argv"
+end
+
 # Source private fish configuration if it exists
 if test -f ~/.dotfiles/config/private/private.fish
     source ~/.dotfiles/config/private/private.fish
