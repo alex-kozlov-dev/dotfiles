@@ -22,7 +22,10 @@ function qq --description "Ask Claude a quick question"
         echo "Usage: qq <question>" >&2
         return 1
     end
-    claude -p --model sonnet --tools "" --no-session-persistence \
+    # --bare skips hooks so Vibe Island doesn't pick qq up as an agent session
+    claude -p --bare --model sonnet --no-session-persistence \
+        --tools "Read,Glob,Grep,WebSearch,WebFetch" \
+        --allowedTools "Read,Glob,Grep,WebSearch,WebFetch" \
         --append-system-prompt "You are answering a quick one-off question asked from the terminal. Answer directly and concisely, in a few lines at most. No preamble, no follow-up questions." \
         "$argv"
 end
