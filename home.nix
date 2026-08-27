@@ -29,26 +29,16 @@
 	};
 
 	# ghostty
-	home.file.".config/ghostty/config" = {
-		text = ''
-			font-family = "FiraCode Nerd Font Mono"
-			quick-terminal-animation-duration = 0
-			quick-terminal-screen = macos-menu-bar
-			quick-terminal-size = 100%
-			keybind = global:ctrl+§=toggle_quick_terminal
-			keybind = global:ctrl+~=toggle_quick_terminal
-			keybind = global:ctrl+`=toggle_quick_terminal
-			keybind = shift+enter=text:\n
-			theme = Flexoki Dark
-			background = #000000
-			background-opacity = 0.9
-		'';
-	};
+	home.file.".config/ghostty/config".source =
+		config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/ghostty.config";
 
-	# worktrunk (wt) config — copy-ignored on post-start brings node_modules,
-	# the repo's .vscode/ folder, and .claude/settings.local.json into each new
-	# worktree (reflink copy, so it's cheap).
-	home.file.".config/worktrunk/config.toml".source = ./config/worktrunk/config.toml;
+	# worktrunk
+	home.file.".config/worktrunk/config.toml".source =
+		config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/worktrunk.toml";
+
+	# herdr
+	home.file.".config/herdr/config.toml".source =
+		config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/herdr.toml";
 
 	programs.fish = {
 		enable = true;
@@ -74,8 +64,8 @@
 				set -u pure_enable_aws_profile false
 
 				# Source private fish configuration if it exists
-				if test -f ~/.config/fish/private.fish
-					source ~/.config/fish/private.fish
+				if test -f ~/.dotfiles/config/private/private.fish
+					source ~/.dotfiles/config/private/private.fish
 				end
 
 				# https://github.com/qu8n/herdr-automatic-rename

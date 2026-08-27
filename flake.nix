@@ -81,7 +81,7 @@
 					"figma"
 					"licecap"
 					"tunnelblick"
-					"zoom"
+					# "zoom"
 					"swish"
 					"1password"
 					"cursor"
@@ -102,11 +102,6 @@
 					"vibe-island"
 					"visual-studio-code"
 				];
-
-				masApps = {
-				  "1Password for Safari" = 1569813296;
-				  "Velja" = 1607635845;
-				};
 
 				onActivation = {
 					# Must stay false: nix-homebrew's `brew` wrapper re-execs itself after

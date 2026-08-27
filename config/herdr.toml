@@ -1,0 +1,5 @@
+[keys]
+new_tab = ["prefix+c", "cmd+t"]
+
+[ui]
+prompt_new_tab_name = false
