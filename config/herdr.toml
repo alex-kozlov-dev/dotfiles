@@ -1,6 +1,49 @@
 [keys]
 new_tab = ["prefix+c", "cmd+t"]
 close_pane = ["prefix+x", "cmd+w"]
+split_vertical = ["prefix+v", "prefix+right"]
+split_horizontal = ["prefix+minus", "prefix+down"]
+switch_tab = ["ctrl+1..9"]
 
 [ui]
 prompt_new_tab_name = false
+copy_on_select = false
+
+# Command palette
+[[keys.command]]
+key = ["prefix+p", "cmd+p"]
+type = "plugin_action"
+command = "vjeantet.palette.open"
+description = "Command palette"
+
+# Terminal annotations
+[[keys.command]]
+key = "prefix+a"
+type = "plugin_action"
+command = "annotate.capture"
+description = "annotate text"
+
+[[keys.command]]
+key = "prefix+shift+a"
+type = "plugin_action"
+command = "annotate.copy-context"
+description = "copy annotations as context"
+
+[[keys.command]]
+key = "prefix+m"
+type = "plugin_action"
+command = "annotate.manage"
+description = "manage annotations"
+
+# Document review (plannotator-tui)
+[[keys.command]]
+key = "prefix+o"
+type = "plugin_action"
+command = "annotate.open"
+description = "review documents in this folder"
+
+[[keys.command]]
+key = "prefix+shift+o"
+type = "plugin_action"
+command = "annotate.last"
+description = "review the agent's last reply"

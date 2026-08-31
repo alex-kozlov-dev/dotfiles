@@ -8,11 +8,14 @@ function add_newline --on-event fish_postexec
     echo
 end
 
+# conf.d is sourced before /etc/fish/config.fish runs `brew shellenv`,
+# so Homebrew (and mise) aren't on PATH yet at this point
+if test -d /opt/homebrew/bin; and not contains /opt/homebrew/bin $PATH
+    set -gx PATH /opt/homebrew/bin /opt/homebrew/sbin $PATH
+end
+
 # Activate mise
 mise activate fish | source
-
-# Enable .nvmrc
-mise settings add idiomatic_version_file_enable_tools node
 
 set -u pure_enable_aws_profile false
 
@@ -22,8 +25,9 @@ function qq --description "Ask Claude a quick question"
         echo "Usage: qq <question>" >&2
         return 1
     end
-    # --bare skips hooks so Vibe Island doesn't pick qq up as an agent session
-    claude -p --bare --model sonnet --no-session-persistence \
+    # --safe-mode skips hooks so Vibe Island doesn't pick qq up as an agent
+    # session; unlike --bare it still reads OAuth auth from the keychain
+    claude -p --safe-mode --model sonnet --no-session-persistence \
         --tools "Read,Glob,Grep,WebSearch,WebFetch" \
         --allowedTools "Read,Glob,Grep,WebSearch,WebFetch" \
         --append-system-prompt "You are answering a quick one-off question asked from the terminal. Answer directly and concisely, in a few lines at most. No preamble, no follow-up questions." \

@@ -39,6 +39,10 @@
 	# herdr
 	home.file.".config/herdr/config.toml".source =
 		config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/herdr.toml";
+	
+	# herdr-automatic-rename
+	home.file.".config/herdr-automatic-rename/config.sh".source =
+		config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.dotfiles/config/herdr-automatic-rename.config.sh";
 
 	# fish
 	home.file.".config/fish/conf.d/config.fish".source =
