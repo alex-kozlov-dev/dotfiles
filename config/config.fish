@@ -19,6 +19,8 @@ mise activate fish | source
 
 set -u pure_enable_aws_profile false
 
+set -U EDITOR fresh
+
 # Quick question: ask Claude and print the answer, e.g. `qq how do I undo a git commit?`
 function qq --description "Ask Claude a quick question"
     if test (count $argv) -eq 0

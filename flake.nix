@@ -49,14 +49,6 @@
 
 				taps = [
 					{
-						name = "eugenioenko/ttt";
-						trusted = true;
-					}
-					{
-						name = "jnsahaj/lumen";
-						trusted = true;
-					}
-					{
 						name = "rjyo/moshi";
 						trusted = true;
 					}
@@ -70,11 +62,10 @@
 					"worktrunk"
 					"herdr"
 					"ripgrep"
-					"ttt"
-					"jnsahaj/lumen/lumen"
 					"mdcat"
 					"moshi-hook"
 					"mosh"
+					"fresh-editor"
 				];
 
 				casks = [
