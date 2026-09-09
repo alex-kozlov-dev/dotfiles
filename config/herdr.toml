@@ -1,3 +1,5 @@
+onboarding = false
+
 [keys]
 new_tab = ["prefix+c", "cmd+t"]
 close_pane = ["prefix+x", "cmd+w"]

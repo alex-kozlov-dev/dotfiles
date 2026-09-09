@@ -21,6 +21,12 @@ set -u pure_enable_aws_profile false
 
 set -U EDITOR fresh
 
+# Ghostty shell integration
+if test -n "$GHOSTTY_RESOURCES_DIR"
+    source "$GHOSTTY_RESOURCES_DIR"/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish
+end
+
+
 # Quick question: ask Claude and print the answer, e.g. `qq how do I undo a git commit?`
 function qq --description "Ask Claude a quick question"
     if test (count $argv) -eq 0
