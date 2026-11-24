@@ -1,31 +1,14 @@
-set -U NVM_DIR "$HOME/.nvm"
+# Sourced at the end of ~/.config/fish/config.fish (see modules/home/shell.nix).
+# Edits apply to new shells without a rebuild.
 
-any-nix-shell fish --info-right | source
-zoxide init fish | source
+set -gx EDITOR ttt
+
+set -g pure_enable_aws_profile false
 
 # Add a newline to the end of each command
 function add_newline --on-event fish_postexec
     echo
 end
-
-# conf.d is sourced before /etc/fish/config.fish runs `brew shellenv`,
-# so Homebrew (and mise) aren't on PATH yet at this point
-if test -d /opt/homebrew/bin; and not contains /opt/homebrew/bin $PATH
-    set -gx PATH /opt/homebrew/bin /opt/homebrew/sbin $PATH
-end
-
-# Activate mise
-mise activate fish | source
-
-set -u pure_enable_aws_profile false
-
-set -U EDITOR fresh
-
-# Ghostty shell integration
-if test -n "$GHOSTTY_RESOURCES_DIR"
-    source "$GHOSTTY_RESOURCES_DIR"/shell-integration/fish/vendor_conf.d/ghostty-shell-integration.fish
-end
-
 
 # Quick question: ask Claude and print the answer, e.g. `qq how do I undo a git commit?`
 function qq --description "Ask Claude a quick question"
@@ -42,13 +25,13 @@ function qq --description "Ask Claude a quick question"
         "$argv"
 end
 
-# Source private fish configuration if it exists
-if test -f ~/.dotfiles/config/private/private.fish
-    source ~/.dotfiles/config/private/private.fish
-end
-
 # https://github.com/qu8n/herdr-automatic-rename
 # Auto rename hook
 for _f in $HOME/.config/herdr/plugins/github/herdr-automatic-rename-*/shell/hook.fish
     test -r "$_f"; and source "$_f"; and break
+end
+
+# Private config (not in git)
+if test -f ~/.dotfiles/config/private/private.fish
+    source ~/.dotfiles/config/private/private.fish
 end

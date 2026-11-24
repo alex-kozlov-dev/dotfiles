@@ -1,14 +1,24 @@
 # Dotfiles
 
+nix-darwin + home-manager config for my Macs.
+
+```
+flake.nix            # one entry per Mac (named after its LocalHostName)
+hosts/               # what's specific to each machine (identity, extra apps)
+modules/darwin/      # shared system config: Homebrew, macOS defaults, shells
+modules/home/        # shared user config: packages, fish, git, dotfile links
+config/              # raw config files, symlinked into place (edit without rebuilding)
+```
+
 ## Installation
 
-Install xcode CLI tools:
+Install Xcode CLI tools:
 
 ```bash
 xcode-select --install
 ```
 
-Install nix:
+Install Nix:
 
 ```bash
 sh <(curl -L https://nixos.org/nix/install)
@@ -20,22 +30,17 @@ Pull the repo:
 nix-shell -p git --run 'git clone https://github.com/alex-kozlov-dev/dotfiles.git ~/.dotfiles'
 ```
 
-Activate config:
+Add the machine: create `hosts/<name>.nix` and an entry `<name>` in `flake.nix`. Set `networking.hostName` and `networking.localHostName` to `<name>` in the host file so later runs find it automatically. Then activate:
 
 ```bash
-NIX_DARWIN_UID="$(id -u)" nix --impure run nix-darwin --extra-experimental-features 'nix-command flakes' -- switch --flake ~/.dotfiles#mac
+sudo nix --extra-experimental-features 'nix-command flakes' run nix-darwin -- switch --flake ~/.dotfiles#<name>
 ```
 
 ## Commands
 
-Apply config:
-
-```
-make apply
-```
-
-Cleanup unused nix stuff:
-
-```
-make cleanup
-```
+| | |
+|---|---|
+| `make apply` | Update Homebrew and apply the config (`HOST=<name>` if the hostname doesn't match) |
+| `make build` | Build without applying (same `HOST=`) |
+| `make update` | Update flake inputs |
+| `make cleanup` | Delete old Nix generations |

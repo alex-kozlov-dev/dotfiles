@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "theme": "default-dark",
+  "editor": {
+    "tabSize": 4,
+    "insertSpaces": true,
+    "wordWrap": true,
+    "diffMode": "split",
+    "diffContext": "changes",
+    "diffWordWrap": false,
+    "lineNumbers": true,
+    "formatOnSave": false,
+    "insertFinalNewline": true,
+    "trimTrailingWhitespace": false,
+    "focusOnOpen": false,
+    "syntaxHighlight": true,
+    "gitGutter": true,
+    "autoDedent": true,
+    "autoIndent": true,
+    "gutterStyle": "compact",
+    "borderStyle": "default",
+    "bracketPairColorization": false,
+    "showTrailingNewline": true,
+    "menuBar": true,
+    "transparentBackground": true
+  },
+  "search": {
+    "debounce": 350
+  },
+  "explorer": {
+    "showHidden": true,
+    "showGitIgnored": true
+  },
+  "sidebar": {
+    "width": 25
+  },
+  "git": {
+    "fileView": "list"
+  },
+  "terminal": {
+    "scrollback": 1000
+  },
+  "lsp": {
+    "enabled": true,
+    "servers": {
+      "typescript": {
+        "command": [
+          "typescript-language-server",
+          "--stdio"
+        ],
+        "languages": {
+          ".cjs": "javascript",
+          ".cts": "typescript",
+          ".js": "javascript",
+          ".jsx": "javascriptreact",
+          ".mjs": "javascript",
+          ".mts": "typescript",
+          ".ts": "typescript",
+          ".tsx": "typescriptreact"
+        }
+      },
+      "nix": {
+        "command": [
+          "nixd"
+        ],
+        "languages": {
+          ".nix": "nix"
+        }
+      }
+    },
+    "saveOnRename": false,
+    "hoverDelay": 500
+  },
+  "autocomplete": {
+    "enabled": true,
+    "autoSuggest": true,
+    "debounce": 150,
+    "signatureHelp": true
+  },
+  "markdown": {
+    "wrapWidth": 80
+  },
+  "plugins": {
+    "enabled": true
+  }
+}

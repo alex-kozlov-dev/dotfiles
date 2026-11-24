@@ -1,0 +1,6 @@
+[tools]
+bun = "1.2.21"
+node = "24"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
